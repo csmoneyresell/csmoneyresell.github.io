@@ -54,7 +54,7 @@ var calculate_tax = function() {
 }
     function calcTaxes1(quantity,deposited,bonus,cutprice){
         var calculate = 0;
-        tax1 = (cutprice * quantity) - (deposited + bonus);
+        tax1 = (cutprice * quantity) - deposited + bonus;
         return tax1;
     }
 

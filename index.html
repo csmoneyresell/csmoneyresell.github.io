@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>cs.money resell tools</title>
+    <style>
+    article, aside, figure, footer, header, nav, section {
+    display: block;
+    }
+    body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    margin: 0 auto;
+    width: 500px;
+    border: 3px solid blue;
+    }
+    h1 {
+    color: blue;
+    margin-top: 0;
+    }
+    section {
+    padding: 1em 2em;
+    }
+    label {
+    float: left;
+    width: 10em;
+    text-align: right;
+    }
+    input {
+    margin-left: 1em;
+    margin-bottom: .5em;
+    }
+
+    </style>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script>
+    var $ = function (id) {
+    return document.getElementById(id);
+}
+
+var calculate_tax = function() {
+    var total;
+    var quantity = parseFloat( $("quantity").value );
+    var deposited = parseFloat( $("deposited").value );
+    var bonus = parseFloat( $("bonus").value );
+    $("tax").value =  calcTaxes(quantity,deposited,bonus);
+    $("tax1").value =  calcTaxes(quantity,deposited,bonus,cutprice);
+    console.log(tax);
+    function calcTaxes(quantity,deposited,bonus){
+    var calculate = 0;
+    tax = (deposited - bonus) / quantity;
+    return tax;
+}
+function calcTaxes1(quantity,deposited,bonus,cutprice){
+    var calculate = 0;
+    tax = cutprice * quantity - dposited + bonus
+    return tax;
+}
+
+
+
+
+
+}
+
+window.onload = function () {
+    $("calculate").onclick = calculate_tax;
+}
+
+    </script>
+</head>
+
+<body>
+<section>
+    <h1>CS.MONEY Resell Tools</h1>
+    <i>refresh after each set of inputs</i>
+    <h2>Your Cut Price and Profit at Y</h2>
+
+
+    <label>Enter Deposited:</label>
+    <input type="text" id="deposited" />
+    <label>Enter Bonus:</label>
+    <input type="text" id="bonus" />
+    <label>Enter Quantity:</label>
+    <input type="text" id="quantity" />
+    <label>Enter Cut Price (leave blank if unknown):</label>
+    <input type="text" id="cutprice" />
+    <input type="button" value="Calculate" name="calculate" id="calculate" /><br><br>
+
+
+    <label>Your Cut Price</label>
+    <input type="text" id="tax"><br>
+    <label>Profit at Cut Price:</label>
+    <input type="text" id="tax1"><br>
+
+
+
+</section>
+</body>
+</html>
